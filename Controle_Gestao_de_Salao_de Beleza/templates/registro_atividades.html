@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Registro de Atividades</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f9f9f9;
+        padding: 20px;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+      }
+      th,
+      td {
+        padding: 10px;
+        text-align: left;
+        border: 1px solid #ddd;
+      }
+      th {
+        background-color: #f2f2f2;
+      }
+      tr:hover {
+        background-color: #f1f1f1;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Registro de Atividades</h1>
+    <table>
+      <tr>
+        <th>Usuário ID</th>
+        <th>Ação</th>
+        <th>Data e Hora</th>
+      </tr>
+      {% if atividades %} {% for atividade in atividades %}
+      <tr>
+        <td>{{ atividade['usuario_id'] }}</td>
+        <td>{{ atividade['acao'] }}</td>
+        <td>{{ atividade['data_hora'] }}</td>
+      </tr>
+      {% endfor %} {% else %}
+      <tr>
+        <td colspan="3">Nenhuma atividade registrada.</td>
+      </tr>
+      {% endif %}
+    </table>
+  </body>
+</html>

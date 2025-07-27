@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Lista de Funcionários</title>
+  </head>
+  <body>
+    <h1>Funcionários</h1>
+    <table>
+      <tr>
+        <th>Nome</th>
+        <th>Cargo</th>
+        <th>Salário</th>
+        <th>Ações</th>
+      </tr>
+      {% for funcionario in funcionarios %}
+      <tr>
+        <td>{{ funcionario['nome'] }}</td>
+        <td>{{ funcionario['cargo'] }}</td>
+        <td>{{ funcionario['salario'] }}</td>
+        <td>
+          <a href="{{ url_for('editar_funcionario', id=funcionario['id']) }}"
+            >Editar</a
+          >
+          <form
+            action="{{ url_for('remover_funcionario', id=funcionario['id']) }}"
+            method="POST"
+            style="display: inline"
+          >
+            <button type="submit">Remover</button>
+          </form>
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+  </body>
+</html>
